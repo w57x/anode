@@ -7,6 +7,7 @@ import { getDistance, getCenter } from './ViewportManager.js';
 export interface InteractionHandlerProps {
   /** Reference to the world container element. */
   worldRef: React.RefObject<HTMLDivElement | null>;
+  worldEl: HTMLDivElement | null;
 
   /** Callback to intercept and handle link completion. */
   onConnect?: ((fromId: number, toId: number, ctx: Context<any>) => void) | undefined;
@@ -35,6 +36,7 @@ export interface InteractionHandlerProps {
  */
 export const useInteractionHandler = ({
   worldRef,
+  worldEl,
   onConnect,
   isValidConnection,
   defaultLinkKind = LinkKind.BEZIER
@@ -268,18 +270,30 @@ export const useInteractionHandler = ({
       document.addEventListener('touchend', onUp);
     };
 
-    const el = worldRef.current;
+    const el = worldEl;
     el?.addEventListener('anode-link-start', handleLinkStart);
     el?.addEventListener('anode-link-reconnect', handleReconnect);
     return () => {
       el?.removeEventListener('anode-link-start', handleLinkStart);
       el?.removeEventListener('anode-link-reconnect', handleReconnect);
     };
-  }, [ctx, worldRef, defaultLinkKind, onConnect, isValidConnection]);
+  }, [ctx, worldEl, defaultLinkKind, onConnect, isValidConnection]);
 
   const onMouseDown = (e: React.MouseEvent) => {
     if (e.button !== 0) return;
-    if (e.target !== worldRef.current) return;
+    if (!worldRef.current) return;
+    const targetEl = e.target as HTMLElement;
+    if (
+      targetEl &&
+      (targetEl.closest('.anode-node') ||
+        targetEl.closest('.anode-group') ||
+        targetEl.closest('.anode-socket') ||
+        targetEl.closest('.anode-controls') ||
+        targetEl.closest('.anode-minimap') ||
+        targetEl.closest('.anode-panel'))
+    ) {
+      return;
+    }
 
     if (e.altKey) {
       const rect = worldRef.current.getBoundingClientRect();
@@ -354,7 +368,18 @@ export const useInteractionHandler = ({
 
   const onTouchStart = (e: React.TouchEvent) => {
     if (e.touches.length === 1) {
-      if (e.target !== worldRef.current) return;
+      const targetEl = e.target as HTMLElement;
+      if (
+        targetEl &&
+        (targetEl.closest('.anode-node') ||
+          targetEl.closest('.anode-group') ||
+          targetEl.closest('.anode-socket') ||
+          targetEl.closest('.anode-controls') ||
+          targetEl.closest('.anode-minimap') ||
+          targetEl.closest('.anode-panel'))
+      ) {
+        return;
+      }
       setSelection({ nodes: new Set(), links: new Set() });
       const touch = e.touches[0];
       if (!touch) return;
