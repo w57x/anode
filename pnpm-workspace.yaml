@@ -4,4 +4,5 @@ overrides:
   react: ^19.2.4
   react-dom: ^19.2.4
 allowBuilds:
+  canvas: true
   esbuild: true
