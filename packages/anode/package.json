@@ -47,6 +47,8 @@
   "type": "module",
   "packageManager": "pnpm@10.30.3",
   "devDependencies": {
+    "@types/dagre": "^0.7.54",
+    "dagre": "^0.8.5",
     "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
     "vitest": "4.0.18"
