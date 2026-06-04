@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1780549277618,
+  "lastUpdate": 1780549508425,
   "repoUrl": "https://github.com/w57x/anode",
   "entries": {
     "Benchmark": [
@@ -2414,6 +2414,100 @@ window.BENCHMARK_DATA = {
             "range": "0.10%",
             "unit": "ops/sec",
             "extra": "Samples: 670001\nMin: 0.0007 ms\nMax: 0.0350 ms\np99: 0.0008 ms\nMean: 0.0007 ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "delphin.blehoussi93@gmail.com",
+            "name": "luxluth",
+            "username": "luxluth"
+          },
+          "committer": {
+            "email": "delphin.blehoussi93@gmail.com",
+            "name": "luxluth",
+            "username": "luxluth"
+          },
+          "distinct": true,
+          "id": "133df31689992a64f4ae4a73221a76a8a3efefcc",
+          "message": "chore: renaming org",
+          "timestamp": "2026-06-04T07:04:23+02:00",
+          "tree_id": "21ad5a6c82e02b8a79f7bdae85ec50e36e67a873",
+          "url": "https://github.com/w57x/anode/commit/133df31689992a64f4ae4a73221a76a8a3efefcc"
+        },
+        "date": 1780549507547,
+        "tool": "customBiggerIsBetter",
+        "benches": [
+          {
+            "name": "Create 1000 entities with 2 sockets",
+            "value": 1.486734909944887,
+            "range": "0.59%",
+            "unit": "ops/sec",
+            "extra": "Samples: 10\nMin: 666.8826 ms\nMax: 684.9164 ms\np99: 684.9164 ms\nMean: 672.6149 ms"
+          },
+          {
+            "name": "Link 1000 entities sequentially",
+            "value": 299.87162555684336,
+            "range": "3.68%",
+            "unit": "ops/sec",
+            "extra": "Samples: 150\nMin: 2.7068 ms\nMax: 10.8079 ms\np99: 6.3813 ms\nMean: 3.3348 ms"
+          },
+          {
+            "name": "Query 2000 nodes (10% viewport)",
+            "value": 1737601.3119105073,
+            "range": "16.74%",
+            "unit": "ops/sec",
+            "extra": "Samples: 868801\nMin: 0.0005 ms\nMax: 42.6923 ms\np99: 0.0010 ms\nMean: 0.0006 ms"
+          },
+          {
+            "name": "Move 1000 nodes (Incremental QuadTree updates)",
+            "value": 1550.7649614801644,
+            "range": "0.64%",
+            "unit": "ops/sec",
+            "extra": "Samples: 776\nMin: 0.6167 ms\nMax: 1.6143 ms\np99: 0.7289 ms\nMean: 0.6448 ms"
+          },
+          {
+            "name": "Direct value propagation (1 link)",
+            "value": 7603745.7871715035,
+            "range": "0.55%",
+            "unit": "ops/sec",
+            "extra": "Samples: 3801873\nMin: 0.0001 ms\nMax: 0.3651 ms\np99: 0.0002 ms\nMean: 0.0001 ms"
+          },
+          {
+            "name": "Chain propagation (100 links deep)",
+            "value": 10349.40453666148,
+            "range": "0.21%",
+            "unit": "ops/sec",
+            "extra": "Samples: 5175\nMin: 0.0947 ms\nMax: 0.5679 ms\np99: 0.1139 ms\nMean: 0.0966 ms"
+          },
+          {
+            "name": "Serialize 1000 nodes to JSON",
+            "value": 6885.630558378,
+            "range": "5.30%",
+            "unit": "ops/sec",
+            "extra": "Samples: 3443\nMin: 0.0609 ms\nMax: 8.1765 ms\np99: 0.5013 ms\nMean: 0.1452 ms"
+          },
+          {
+            "name": "Deserialize 1000 nodes from JSON",
+            "value": 983.6343752336089,
+            "range": "0.92%",
+            "unit": "ops/sec",
+            "extra": "Samples: 492\nMin: 0.9764 ms\nMax: 1.8099 ms\np99: 1.7265 ms\nMean: 1.0166 ms"
+          },
+          {
+            "name": "Apply 500 atomic actions",
+            "value": 1316.14688098548,
+            "range": "0.52%",
+            "unit": "ops/sec",
+            "extra": "Samples: 659\nMin: 0.7352 ms\nMax: 1.5081 ms\np99: 0.8493 ms\nMean: 0.7598 ms"
+          },
+          {
+            "name": "Resolve world position (50 levels deep)",
+            "value": 1491824.7349262699,
+            "range": "0.08%",
+            "unit": "ops/sec",
+            "extra": "Samples: 745913\nMin: 0.0006 ms\nMax: 0.0965 ms\np99: 0.0007 ms\nMean: 0.0007 ms"
           }
         ]
       }
