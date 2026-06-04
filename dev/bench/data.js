@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1780552670237,
+  "lastUpdate": 1780552700520,
   "repoUrl": "https://github.com/w57x/anode",
   "entries": {
     "Benchmark": [
@@ -3438,6 +3438,98 @@ window.BENCHMARK_DATA = {
             "range": "0.10%",
             "unit": "ops/sec",
             "extra": "Samples: 586629\nMin: 0.0008 ms\nMax: 0.1065 ms\np99: 0.0009 ms\nMean: 0.0009 ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Delphin Blehoussi",
+            "username": "luxluth",
+            "email": "delphin.blehoussi93@gmail.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "bfc814040f1e3df079832d62d70cc92fdb407970",
+          "message": "Merge pull request #9 from w57x/changeset-release/master\n\nVersion Packages",
+          "timestamp": "2026-06-04T05:57:05Z",
+          "url": "https://github.com/w57x/anode/commit/bfc814040f1e3df079832d62d70cc92fdb407970"
+        },
+        "date": 1780552700168,
+        "tool": "customBiggerIsBetter",
+        "benches": [
+          {
+            "name": "Create 1000 entities with 2 sockets",
+            "value": 1.1431677717203488,
+            "range": "1.31%",
+            "unit": "ops/sec",
+            "extra": "Samples: 10\nMin: 859.5147 ms\nMax: 913.6202 ms\np99: 913.6202 ms\nMean: 874.7622 ms"
+          },
+          {
+            "name": "Link 1000 entities sequentially",
+            "value": 243.49728767472692,
+            "range": "1.56%",
+            "unit": "ops/sec",
+            "extra": "Samples: 122\nMin: 3.4709 ms\nMax: 6.5467 ms\np99: 5.2530 ms\nMean: 4.1068 ms"
+          },
+          {
+            "name": "Query 2000 nodes (10% viewport)",
+            "value": 979533.6591217507,
+            "range": "50.61%",
+            "unit": "ops/sec",
+            "extra": "Samples: 489767\nMin: 0.0006 ms\nMax: 129.0763 ms\np99: 0.0014 ms\nMean: 0.0010 ms"
+          },
+          {
+            "name": "Move 1000 nodes (Incremental QuadTree updates)",
+            "value": 1140.5346023647903,
+            "range": "0.86%",
+            "unit": "ops/sec",
+            "extra": "Samples: 571\nMin: 0.7973 ms\nMax: 2.2648 ms\np99: 1.1712 ms\nMean: 0.8768 ms"
+          },
+          {
+            "name": "Direct value propagation (1 link)",
+            "value": 5966338.341371661,
+            "range": "0.30%",
+            "unit": "ops/sec",
+            "extra": "Samples: 2983170\nMin: 0.0001 ms\nMax: 0.6155 ms\np99: 0.0003 ms\nMean: 0.0002 ms"
+          },
+          {
+            "name": "Chain propagation (100 links deep)",
+            "value": 7979.051562056119,
+            "range": "0.26%",
+            "unit": "ops/sec",
+            "extra": "Samples: 3990\nMin: 0.1227 ms\nMax: 0.6948 ms\np99: 0.1409 ms\nMean: 0.1253 ms"
+          },
+          {
+            "name": "Serialize 1000 nodes to JSON",
+            "value": 4601.370487530917,
+            "range": "4.74%",
+            "unit": "ops/sec",
+            "extra": "Samples: 2303\nMin: 0.0725 ms\nMax: 8.7147 ms\np99: 0.6552 ms\nMean: 0.2173 ms"
+          },
+          {
+            "name": "Deserialize 1000 nodes from JSON",
+            "value": 764.5447929645962,
+            "range": "0.89%",
+            "unit": "ops/sec",
+            "extra": "Samples: 383\nMin: 1.2638 ms\nMax: 2.7090 ms\np99: 1.9340 ms\nMean: 1.3080 ms"
+          },
+          {
+            "name": "Apply 500 atomic actions",
+            "value": 1023.0241781574139,
+            "range": "0.57%",
+            "unit": "ops/sec",
+            "extra": "Samples: 512\nMin: 0.9448 ms\nMax: 1.7293 ms\np99: 1.2409 ms\nMean: 0.9775 ms"
+          },
+          {
+            "name": "Resolve world position (50 levels deep)",
+            "value": 1165388.7670181822,
+            "range": "0.10%",
+            "unit": "ops/sec",
+            "extra": "Samples: 582695\nMin: 0.0008 ms\nMax: 0.0479 ms\np99: 0.0009 ms\nMean: 0.0009 ms"
           }
         ]
       }
