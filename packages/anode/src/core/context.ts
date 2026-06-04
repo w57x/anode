@@ -33,6 +33,18 @@ export type SocketValueCallback = (socket: Socket, value: any) => void;
 export type CallbackHandle = number;
 
 /**
+ * Callback function used by external layout engines to compute node layout positions.
+ *
+ * @param nodes - List of nodes with their ID, width, and height.
+ * @param edges - List of edges connecting the nodes.
+ * @returns A mapping or promise of a mapping of node IDs to their computed coordinates.
+ */
+export type LayoutComputeFunc = (
+  nodes: { id: number; width: number; height: number }[],
+  edges: { id: number; source: number; target: number }[]
+) => Promise<Record<number, { x: number; y: number }>> | Record<number, { x: number; y: number }>;
+
+/**
  * The central engine for Anode.
  *
  * Context manages the lifecycle of entities, sockets, links, and groups.
@@ -1363,5 +1375,65 @@ export class Context<T = any> {
       }
     }
     this.updateQuadTree();
+  }
+
+  /**
+   * Applies an external layout to the graph in a single undoable transaction.
+   *
+   * @param calculator A function that takes nodes and edges and returns the new positions.
+   * @param nodeDimensions A map or function to get width/height for each entity.
+   */
+  async applyLayout(
+    calculator: LayoutComputeFunc,
+    nodeDimensions?:
+      | Record<number, { width: number; height: number }>
+      | ((id: number) => { width: number; height: number })
+  ) {
+    const nodes: { id: number; width: number; height: number }[] = [];
+    const edges: { id: number; source: number; target: number }[] = [];
+
+    // we get nodes and dimensions
+    for (const entity of this.entities.values()) {
+      let width = 150;
+      let height = 80;
+
+      if (nodeDimensions) {
+        const dim =
+          typeof nodeDimensions === 'function'
+            ? nodeDimensions(entity.id)
+            : nodeDimensions[entity.id];
+        if (dim) {
+          width = dim.width;
+          height = dim.height;
+        }
+      }
+
+      nodes.push({ id: entity.id, width, height });
+    }
+
+    // we gather edges (links)
+    for (const link of this.links.values()) {
+      const fromSocket = this.sockets.get(link.from);
+      const toSocket = this.sockets.get(link.to);
+      if (fromSocket && toSocket) {
+        edges.push({
+          id: link.id,
+          source: fromSocket.entityId,
+          target: toSocket.entityId
+        });
+      }
+    }
+
+    const positions = await calculator(nodes, edges);
+
+    this.batch(() => {
+      for (const [idStr, pos] of Object.entries(positions)) {
+        const id = Number(idStr);
+        const entity = this.entities.get(id);
+        if (entity && pos) {
+          entity.move(pos.x, pos.y);
+        }
+      }
+    }, 'Auto Layout');
   }
 }

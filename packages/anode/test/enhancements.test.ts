@@ -158,4 +158,105 @@ describe('Core Enhancements', () => {
       expect(path).toBe('M 200 0 L 220 0 L 220 50 L -20 50 L -20 100 L 0 100');
     });
   });
+
+  describe('External Layout Integration', () => {
+    it('should calculate and apply node layouts in a single transaction', async () => {
+      const e1 = ctx.newEntity({});
+      const e2 = ctx.newEntity({});
+      e1.move(0, 0);
+      e2.move(0, 0);
+
+      const s1 = ctx.newSocket(e1, SocketKind.OUTPUT, 'out');
+      const s2 = ctx.newSocket(e2, SocketKind.INPUT, 'in');
+      ctx.newLink({ from: s1, to: s2 });
+
+      const mockCalculator = (
+        nodes: { id: number; width: number; height: number }[],
+        edges: { id: number; source: number; target: number }[]
+      ) => {
+        expect(nodes.length).toBe(2);
+        expect(edges.length).toBe(1);
+
+        return {
+          [e1.id]: { x: 100, y: 150 },
+          [e2.id]: { x: 300, y: 350 }
+        };
+      };
+
+      await ctx.applyLayout(mockCalculator, () => ({ width: 100, height: 100 }));
+
+      expect(e1.position.x).toBe(100);
+      expect(e1.position.y).toBe(150);
+      expect(e2.position.x).toBe(300);
+      expect(e2.position.y).toBe(350);
+
+      // Verify it was recorded in history
+      expect(ctx.history.undoStack.length > 0).toBe(true);
+      ctx.undo();
+
+      const e1After = ctx.entities.get(e1.id)!;
+      const e2After = ctx.entities.get(e2.id)!;
+      expect(e1After.position.x).toBe(0);
+      expect(e1After.position.y).toBe(0);
+      expect(e2After.position.x).toBe(0);
+      expect(e2After.position.y).toBe(0);
+    });
+
+    it('should successfully layout nodes using dagre layout engine', async () => {
+      const e1 = ctx.newEntity({});
+      const e2 = ctx.newEntity({});
+      e1.move(0, 0);
+      e2.move(0, 0);
+
+      const s1 = ctx.newSocket(e1, SocketKind.OUTPUT, 'out');
+      const s2 = ctx.newSocket(e2, SocketKind.INPUT, 'in');
+      ctx.newLink({ from: s1, to: s2 });
+
+      const dagre = await import('dagre');
+      const dagreLib = ((dagre as any).default || dagre) as any;
+
+      const dagreCalculator = (
+        nodes: { id: number; width: number; height: number }[],
+        edges: { id: number; source: number; target: number }[]
+      ) => {
+        const g = new dagreLib.graphlib.Graph();
+        g.setGraph({ rankdir: 'LR', ranksep: 50, nodesep: 50 });
+        g.setDefaultEdgeLabel(() => ({}));
+
+        for (const n of nodes) {
+          g.setNode(n.id.toString(), { width: n.width, height: n.height });
+        }
+
+        for (const e of edges) {
+          g.setEdge(e.source.toString(), e.target.toString());
+        }
+
+        dagreLib.layout(g);
+
+        const result: Record<number, { x: number; y: number }> = {};
+        for (const n of nodes) {
+          const pos = g.node(n.id.toString());
+          result[n.id] = { x: pos.x, y: pos.y };
+        }
+        return result;
+      };
+
+      await ctx.applyLayout(dagreCalculator, () => ({ width: 150, height: 80 }));
+
+      // Verify node positions updated
+      const e1L = ctx.entities.get(e1.id)!;
+      const e2L = ctx.entities.get(e2.id)!;
+      expect(e1L.position.x).toBeDefined();
+      expect(e2L.position.x).toBeDefined();
+      expect(e1L.position.x).not.toBe(0);
+      expect(e2L.position.x).not.toBe(0);
+
+      // Verify undo/redo works
+      ctx.undo();
+      const e1U = ctx.entities.get(e1.id)!;
+      const e2U = ctx.entities.get(e2.id)!;
+      expect(e1U.position.x).toBe(0);
+      expect(e2U.position.x).toBe(0);
+    });
+  });
 });
