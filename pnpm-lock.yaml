@@ -51,7 +51,7 @@ importers:
 
   packages/anode-react:
     dependencies:
-      '@stuly/anode':
+      '@w57x/anode':
         specifier: workspace:^
         version: link:../anode
       react:

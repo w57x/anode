@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Context, Vec2, LinkKind, type LinkStyling } from '@stuly/anode';
+import { Context, Vec2, LinkKind, type LinkStyling } from '@w57x/anode';
 import { useAnode } from '../../context.js';
 
 /** Minimal representation of a Node for declarative synchronization. */

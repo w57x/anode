@@ -1,5 +1,5 @@
 {
-  "name": "@stuly/anode",
+  "name": "@w57x/anode",
   "version": "0.2.0",
   "main": "dist/anode.js",
   "module": "dist/anode.js",
@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stulyproject/anode.git"
+    "url": "git+https://github.com/w57x/anode.git"
   },
   "bugs": {
-    "url": "https://github.com/stulyproject/anode/issues"
+    "url": "https://github.com/w57x/anode/issues"
   },
-  "homepage": "https://github.com/stulyproject/anode#readme",
+  "homepage": "https://github.com/w57x/anode#readme",
   "files": [
     "dist"
   ],

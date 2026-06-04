@@ -1,17 +1,17 @@
-# @stuly/anode
+# @w57x/anode
 
 The high-performance, headless core engine for Anode. It manages graph topology, spatial indexing, transactional history, and reactive data flow independently of any UI framework.
 
 ## Installation
 
 ```bash
-npm install @stuly/anode
+npm install @w57x/anode
 ```
 
 ## Quick Start
 
 ```typescript
-import { Context, SocketKind } from '@stuly/anode';
+import { Context, SocketKind } from '@w57x/anode';
 
 const ctx = new Context();
 
@@ -33,4 +33,4 @@ ctx.setSocketValue(outA.id, 'Data');
 - **`Link`**: Connection between sockets.
 - **`Group`**: Hierarchical container.
 
-For comprehensive documentation on architecture, spatial indexing, and history management, see the [Full README](https://github.com/stulyproject/anode?tab=readme-ov-file).
+For comprehensive documentation on architecture, spatial indexing, and history management, see the [Full README](https://github.com/w57x/anode?tab=readme-ov-file).

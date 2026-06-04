@@ -1,7 +1,7 @@
 import { useSyncExternalStore, useMemo } from 'react';
 import { useAnode, useViewport } from './context.js';
-import { Entity } from '@stuly/anode';
-import { Rect } from '@stuly/anode';
+import { Entity } from '@w57x/anode';
+import { Rect } from '@w57x/anode';
 
 /**
  * Returns an array of all entities currently in the graph.

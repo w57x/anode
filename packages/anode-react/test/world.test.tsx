@@ -5,7 +5,7 @@ import { World } from '../src/elements/World.js';
 import type { NodeData } from '../src/elements/World/SyncManager.js';
 import { useEffect } from 'react';
 import { Socket } from '../src/elements/Socket.js';
-import { SocketKind } from '@stuly/anode';
+import { SocketKind } from '@w57x/anode';
 
 const Mover = () => {
   const ctx = useAnode();

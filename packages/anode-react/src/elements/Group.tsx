@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAnode, useViewport } from '../context.js';
-import { Group as GroupCore } from '@stuly/anode';
+import { Group as GroupCore } from '@w57x/anode';
 
 export interface GroupProps {
   id: number;

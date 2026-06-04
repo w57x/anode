@@ -1,4 +1,4 @@
-# @stuly/anode
+# @w57x/anode
 
 ## 0.2.0
 
@@ -6,7 +6,7 @@
 
 - 581f70f: Consistency and performance: A cleaner engine with refined link routing.
 
-  ### Core Engine (@stuly/anode)
+  ### Core Engine (@w57x/anode)
   - Atomic Patching System: Introduced `ctx.apply(actions)`
   - Dynamic QuadTree: The spatial index now auto-expands.
   - Reactivity Cycle Protection: Added automated safeguards to `setSocketValue`
@@ -31,7 +31,7 @@
   });
   ```
 
-  ### React Bindings (@stuly/anode-react)
+  ### React Bindings (@w57x/anode-react)
   - Architecture: Decomposed the monolithic World component into focused hooks
     (`useSyncManager`, `useInteractionHandler`, `useViewportManager`).
   - Stable Reference Context: `AnodeProvider` now hosts a stable `worldRef`
@@ -70,4 +70,4 @@
   - Nested Topology: Robust support for nested groups and relative coordinate systems.
 
   Getting Started
-  Check out our README.md (https://github.com/stulyproject/anode) for quick-start examples.
+  Check out our README.md (https://github.com/w57x/anode) for quick-start examples.

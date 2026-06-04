@@ -22,13 +22,13 @@ This context tracks entities (nodes), sockets, links, and groups.
 ### Quick Start Examples
 
 ```bash
-npm install @stuly/anode
+npm install @w57x/anode
 ```
 
 #### 1. Headless Core (Framework-Agnostic)
 
 ```ts
-import { Context, SocketKind } from '@stuly/anode';
+import { Context, SocketKind } from '@w57x/anode';
 
 const ctx = new Context();
 
@@ -83,8 +83,8 @@ import {
   useAnode,
   useSocketValue,
   useEntitySockets
-} from '@stuly/anode-react';
-import { Entity, SocketKind } from '@stuly/anode';
+} from '@w57x/anode-react';
+import { Entity, SocketKind } from '@w57x/anode';
 
 const CalculationNode = ({ entity }: { entity: Entity }) => {
   const ctx = useAnode();

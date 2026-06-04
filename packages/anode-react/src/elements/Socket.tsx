@@ -9,7 +9,7 @@ import {
   type TouchEvent
 } from 'react';
 import { useAnode, useViewport } from '../context.js';
-import { SocketKind } from '@stuly/anode';
+import { SocketKind } from '@w57x/anode';
 
 export interface SocketProps {
   /** The ID of the entity this socket belongs to. */

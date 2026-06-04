@@ -1,5 +1,5 @@
 {
-  "name": "@stuly/anode-react",
+  "name": "@w57x/anode-react",
   "version": "1.0.1",
   "description": "First-class React bindings for building interactive, declarative node editors with Anode.",
   "main": "dist/index.js",
@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stulyproject/anode.git"
+    "url": "git+https://github.com/w57x/anode.git"
   },
   "bugs": {
-    "url": "https://github.com/stulyproject/anode/issues"
+    "url": "https://github.com/w57x/anode/issues"
   },
-  "homepage": "https://github.com/stulyproject/anode#readme",
+  "homepage": "https://github.com/w57x/anode#readme",
   "files": [
     "dist"
   ],
@@ -36,7 +36,7 @@
   "license": "MIT",
   "packageManager": "pnpm@10.30.3",
   "peerDependencies": {
-    "@stuly/anode": "workspace:^",
+    "@w57x/anode": "workspace:^",
     "react": "^19.2.4"
   },
   "devDependencies": {

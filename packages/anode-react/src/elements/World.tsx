@@ -4,7 +4,7 @@ import { useVisibleNodes, useEdges, useGroups } from '../hooks.js';
 import { Node, type NodeComponentProps } from './Node.js';
 import { Group } from './Group.js';
 import { Link, type LinkComponentProps } from './Link.js';
-import { LinkKind, Context, LinkStyle, getLinkPath, Vec2 } from '@stuly/anode';
+import { LinkKind, Context, LinkStyle, getLinkPath, Vec2 } from '@w57x/anode';
 import { useSyncManager, type NodeData, type LinkData } from './World/SyncManager.js';
 export type { NodeData, LinkData };
 import { ShortcutProvider } from './World/ShortcutProvider.js';

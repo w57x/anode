@@ -7,7 +7,7 @@ import {
   Vec2,
   Link as LinkCore,
   LinkStyle
-} from '@stuly/anode';
+} from '@w57x/anode';
 
 export interface LinkComponentProps {
   id: number;

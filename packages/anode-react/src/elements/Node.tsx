@@ -8,7 +8,7 @@ import {
   type TouchEvent
 } from 'react';
 import { useAnode, useViewport, useSelection } from '../context.js';
-import { Entity } from '@stuly/anode';
+import { Entity } from '@w57x/anode';
 
 export interface NodeProps {
   id: number;
