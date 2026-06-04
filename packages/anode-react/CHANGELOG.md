@@ -1,5 +1,12 @@
 # @w57x/anode-react
 
+## 2.0.0
+
+### Patch Changes
+
+- Updated dependencies [c0b0d99]
+  - @w57x/anode@0.3.0
+
 ## 1.0.1
 
 ### Patch Changes
