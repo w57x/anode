@@ -1,7 +1,7 @@
 {
   "name": "anode-workspace",
   "private": true,
-  "packageManager": "pnpm@10.30.3",
+  "packageManager": "pnpm@11.5.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/w57x/anode.git"
@@ -28,15 +28,5 @@
     "prettier": "^3.8.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
-  },
-  "pnpm": {
-    "overrides": {
-      "react": "^19.2.4",
-      "react-dom": "^19.2.4"
-    },
-    "onlyBuiltDependencies": [
-      "canvas",
-      "esbuild"
-    ]
   }
 }
